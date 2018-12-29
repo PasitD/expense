@@ -5,7 +5,7 @@ public class Account {
     private double income;
     private double expense;
 
-    ArrayList<AccountRecord> accountRecords = new ArrayList<AccountRecord>();
+    ArrayList<AccountRecord> accountRecords = new ArrayList<>();
 
     public Account(){
         this.balance = 0;
@@ -18,6 +18,7 @@ public class Account {
     public double getBalance(){
         return balance;
     }
+
     public void income(double money, String description){
         this.balance += money;
         this.income += money;
