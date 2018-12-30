@@ -6,7 +6,7 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 public class HomeController {
-    private Connector connector;
+    private Connector connector, fileConnector;
     private Account account;
 
     @FXML
@@ -21,6 +21,7 @@ public class HomeController {
     public void initialize(){
         account = new Account();
         connector = DBConnector.getInstance();
+        fileConnector = FileConnector.getInstance();
 
         descriptionCol.setCellValueFactory(new PropertyValueFactory<History, String>("description"));
         moneyCol.setCellValueFactory(new PropertyValueFactory<History, String>("money"));
@@ -43,6 +44,7 @@ public class HomeController {
             String description = descriptionField.getText();
             account.expense(Double.parseDouble(money),description);
             connector.add("Expense", "-" + money,  description);
+            fileConnector.add("Expense", "-" + money,  description);
             moneyField.clear();
             descriptionField.clear();
             tableView.setItems(connector.viewHistory());
@@ -65,6 +67,7 @@ public class HomeController {
             String description = descriptionField.getText();
             account.income(Double.parseDouble(money),description);
             connector.add("Income", "+" + money,  description);
+            fileConnector.add("Income", "+" + money,  description);
             moneyField.clear();
             descriptionField.clear();
             tableView.setItems(connector.viewHistory());
