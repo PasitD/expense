@@ -1,0 +1,3 @@
+Income +100 dad give
+Income +100  mom give
+Expense -50 buy rice
